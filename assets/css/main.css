@@ -39,6 +39,7 @@
 
 
 
+
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
@@ -52,6 +53,82 @@
   --heading-color: #ffffff;
   --surface-color: #151f2b;
   --contrast-color: #ffffff;
+}
+.details-section {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.cta-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-section .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.cta-section .btn i {
+  font-size: 18px;
+}
+
+/* Bouton principal */
+.cta-section .btn-primary {
+  background-color: #c1c3c6;
+  color: #000000;
+  border: none;
+}
+
+.cta-section .btn-primary:hover {
+  background-color: #afafaf;
+}
+
+/* Bouton secondaire */
+.cta-section .btn-outline {
+  background-color: transparent;
+  color: #74787c;
+  border: 2px solid #ffffff;
+}
+
+.cta-section .btn-outline:hover {
+  background-color: #c1c3c6;
+  color: #000000;
 }
 
 
