@@ -22,6 +22,27 @@
   headerToggleBtn.addEventListener('click', headerToggle);
 
   /**
+   * Toggle Project Details
+   */
+  function toggleProject(element) {
+    const projectCard = element.closest('.project-card');
+    const allProjectCards = document.querySelectorAll('.project-card');
+
+    // Close all other project cards
+    allProjectCards.forEach(card => {
+      if (card !== projectCard) {
+        card.classList.remove('expanded');
+      }
+    });
+
+    // Toggle current project card
+    projectCard.classList.toggle('expanded');
+  }
+
+  // Rendre la fonction accessible globalement
+  window.toggleProject = toggleProject;
+
+  /**
    * Hide mobile nav on same-page/hash links
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
@@ -225,5 +246,43 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Portfolio Filter
+   */
+  const portfolioFilters = document.querySelectorAll('.portfolio-filters li');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  function filterPortfolio(filterValue) {
+    portfolioItems.forEach(item => {
+      if (filterValue === '*') {
+        item.style.display = 'block';
+        item.classList.remove('isotope-hidden');
+      } else {
+        if (item.classList.contains(filterValue.substring(1))) {
+          item.style.display = 'block';
+          item.classList.remove('isotope-hidden');
+        } else {
+          item.style.display = 'none';
+          item.classList.add('isotope-hidden');
+        }
+      }
+    });
+  }
+
+  // Initialize portfolio filters
+  portfolioFilters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      // Remove active class from all filters
+      portfolioFilters.forEach(f => f.classList.remove('filter-active'));
+      // Add active class to clicked filter
+      filter.classList.add('filter-active');
+      // Apply filter
+      filterPortfolio(filter.getAttribute('data-filter'));
+    });
+  });
+
+  // Show all items by default
+  filterPortfolio('*');
 
 })();
